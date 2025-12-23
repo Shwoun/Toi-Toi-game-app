@@ -33,7 +33,7 @@ import com.example.playtocrypto.ui.theme.Backround
 import com.example.playtocrypto.ui.theme.Red
 import com.example.playtocrypto.ui.theme.litewihet
 
-//@Preview(showSystemUi = true)
+@Preview(showSystemUi = true)
 @Composable
 fun Profile() {
     val respons = LocalDimensions.current
