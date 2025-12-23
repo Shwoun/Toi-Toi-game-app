@@ -104,12 +104,13 @@ fun GridItem(number: Int) {
 
     val respons = LocalDimensions.current
 
-    IconButton (
+    Button (
         onClick = { /* Handle click event */ },
         modifier = Modifier
             .padding(respons.dp(8))
             .size(width = respons.dp(150), height = respons.dp(200)),
-        shape = RoundedCornerShape(respons.dp(12))
+        shape = RoundedCornerShape(respons.dp(12)),
+        contentPadding = PaddingValues(respons.dp(0))
         
     ) {
         Image(
