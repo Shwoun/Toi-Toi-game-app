@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "537481975157",
+    "project_id": "firestore-test-dd3a0",
+    "storage_bucket": "firestore-test-dd3a0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537481975157:android:51306cfbfdc86f0114ef3c",
+        "android_client_info": {
+          "package_name": "com.example.playtocrypto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZi1V8E3o9xZY-r4sOuOQn7I87pxJzbq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
