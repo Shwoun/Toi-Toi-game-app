@@ -19,7 +19,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Divider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -33,18 +32,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.example.playtocrypto.R
 import com.example.playtocrypto.componat.LocalDimensions
 import com.example.playtocrypto.componat.Outlinetextfildname
 import com.example.playtocrypto.componat.PasswordTextfild
+import com.example.playtocrypto.navigat.Screen
 import com.example.playtocrypto.ui.theme.Backround
 import com.example.playtocrypto.ui.theme.green
 import com.example.playtocrypto.ui.theme.litewihet
 import com.example.playtocrypto.ui.theme.with
 
-@Preview(showSystemUi = true)
+
 @Composable
-fun Login() {
+fun Login(navController: NavHostController) {
     val respon = LocalDimensions.current
     var name by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -115,7 +116,7 @@ fun Login() {
         Spacer(Modifier.height(respon.dp(70)))
 
         Button(
-            onClick = {},
+            onClick = { navController.navigate(Screen.Home.route) },
             modifier = Modifier.size(width = respon.dp(300), height = respon.dp(45)),
 
             shape = RoundedCornerShape(respon.dp(8)),
@@ -151,7 +152,7 @@ fun Login() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text("Don't have an account?", color = litewihet, fontSize = respon.sp(16f))
-            TextButton(onClick = {}) {
+            TextButton(onClick = {navController.navigate(Screen.SignUp.route)}) {
                 Column {
                     Text("Sign Up", color = green, fontSize = respon.sp(16f))
                     Divider(Modifier.width(respon.dp(60)))

@@ -42,6 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.playtocrypto.R
 import com.example.playtocrypto.componat.LocalDimensions
 import com.example.playtocrypto.ui.theme.Backround
@@ -52,9 +53,9 @@ import com.example.playtocrypto.ui.theme.with
 
 
 @OptIn(ExperimentalLayoutApi::class)
-@Preview(showSystemUi = true)
+
 @Composable
-fun Payout() {
+fun Payout(navController: NavController) {
     val respons = LocalDimensions.current
     var address by remember { mutableStateOf("") }
     var coinConvert by remember { mutableStateOf("") }

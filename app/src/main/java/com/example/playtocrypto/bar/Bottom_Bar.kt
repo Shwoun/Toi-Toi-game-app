@@ -23,14 +23,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.playtocrypto.R
 import com.example.playtocrypto.componat.LocalDimensions
+import com.example.playtocrypto.navigat.Screen
 import com.example.playtocrypto.ui.theme.PurpleGrey40
 import com.example.playtocrypto.ui.theme.with
-@Preview(showSystemUi = true)
+
 @Composable
 fun BottomBar(
-    onHomeClick: () -> Unit = {},
+
+    navController: NavController
 ) {
     val respons = LocalDimensions.current
 
@@ -55,7 +58,7 @@ fun BottomBar(
 
         ) {
             IconButton(
-                onClick = onHomeClick,
+                onClick = {navController.navigate(Screen.Home.route)},
                 modifier = Modifier.size(respons.dp(50))
             ) {
                 Icon(
@@ -66,7 +69,7 @@ fun BottomBar(
                 )
             }
             IconButton(
-                onClick = onHomeClick,
+                onClick = { navController.navigate(Screen.Payout.route) },
                 modifier = Modifier.size(respons.dp(50))
             ) {
                 Icon(
@@ -77,7 +80,7 @@ fun BottomBar(
                 )
             }
             IconButton(
-                onClick = onHomeClick,
+                onClick = { navController.navigate(Screen.Profile.route) },
                 modifier = Modifier.size(respons.dp(50) )
             ) {
                 Icon(

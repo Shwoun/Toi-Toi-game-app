@@ -27,15 +27,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.playtocrypto.R
 import com.example.playtocrypto.componat.LocalDimensions
 import com.example.playtocrypto.ui.theme.Backround
 import com.example.playtocrypto.ui.theme.Red
 import com.example.playtocrypto.ui.theme.litewihet
 
-@Preview(showSystemUi = true)
+
 @Composable
-fun Profile() {
+fun Profile(navController: NavController) {
     val respons = LocalDimensions.current
     Column(
         modifier = Modifier

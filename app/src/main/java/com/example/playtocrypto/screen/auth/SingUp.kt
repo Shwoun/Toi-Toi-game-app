@@ -30,19 +30,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.example.playtocrypto.R
 import com.example.playtocrypto.componat.LocalDimensions
 import com.example.playtocrypto.componat.Outlinetextfildname
 import com.example.playtocrypto.componat.PasswordTextfild
+import com.example.playtocrypto.navigat.Screen
 import com.example.playtocrypto.ui.theme.Backround
 import com.example.playtocrypto.ui.theme.green
 import com.example.playtocrypto.ui.theme.litewihet
 import com.example.playtocrypto.ui.theme.with
 
-@Preview(showSystemUi = true)
+
 @Composable
-fun SignUp() {
+fun SignUp(navController: NavHostController) {
     val respon = LocalDimensions.current
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -58,7 +59,7 @@ fun SignUp() {
             .padding(respon.dp(8)),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(Modifier.height(respon.dp(50)))
+        Spacer(Modifier.height(respon.dp(40)))
         Text("Register", fontSize = respon.sp(60f), color = with, fontWeight = FontWeight.W600)
         Spacer(Modifier.height(respon.dp(10)))
         Text(
@@ -138,19 +139,19 @@ fun SignUp() {
 
 
         }
-        Spacer(Modifier.height(respon.dp(40)))
+        Spacer(Modifier.height(respon.dp(30)))
 
         IconButton(onClick = {}, Modifier.size(respon.dp(40))) {
             Image(painter = painterResource(R.drawable.google), contentDescription = null)
         }
-        Spacer(Modifier.height(respon.dp(40)))
+        Spacer(Modifier.height(respon.dp(20)))
         Row(
             Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text("Already have an account?", color = litewihet, fontSize = respon.sp(16f))
-            TextButton(onClick = {}) {
+            TextButton(onClick = { navController.navigate(Screen.Login.route)}) {
                 Column {
                     Text("Login", color = green, fontSize = respon.sp(16f))
                     Divider(Modifier.width(respon.dp(40)))
