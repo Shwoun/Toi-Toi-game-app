@@ -11,6 +11,7 @@ import com.example.playtocrypto.screen.auth.Login
 import com.example.playtocrypto.screen.auth.SignUp
 import com.example.playtocrypto.screen.profile.Payout
 import com.example.playtocrypto.screen.profile.Profile
+import com.example.playtocrypto.viewmodel.Auth
 
 sealed class Screen(val route: String) {
     object Login : Screen("login")
@@ -39,12 +40,12 @@ fun NavGraphBuilder.homeNavGraph(navController: NavController) {
 
 }
 
-fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
+fun NavGraphBuilder.authNavGraph(navController: NavHostController, Auth : Auth) {
     composable(Screen.Login.route) {
-        Login(navController)
+        Login(navController,Auth)
     }
     composable(Screen.SignUp.route) {
-        SignUp(navController)
+        SignUp(navController,Auth)
     }
 
 }

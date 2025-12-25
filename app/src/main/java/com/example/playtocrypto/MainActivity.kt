@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
 import com.example.playtocrypto.componat.ProvideResponsiveDimensions
+import com.example.playtocrypto.viewmodel.Auth
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,11 +16,11 @@ class MainActivity : ComponentActivity() {
 
 
             val navController = rememberNavController()
-
+            val Auth = Auth()
 
 
             ProvideResponsiveDimensions {
-                AllScreen(navController)
+                AllScreen(navController, Auth)
             }
 
 

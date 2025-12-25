@@ -6,19 +6,20 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.example.playtocrypto.viewmodel.Auth
 
 @Composable
-fun MainNavgrap(navController: NavHostController) {
+fun MainNavgrap(navController: NavHostController,Auth: Auth) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Login.route,
+        startDestination = if (Auth.current != null) Screen.Home.route else Screen.Login.route,
         enterTransition = { fadeIn(tween(10)) },
         exitTransition = { fadeOut(tween(1)) }) {
 
 
         homeNavGraph(navController)
-        authNavGraph(navController)
+        authNavGraph(navController,Auth)
     }
 
 

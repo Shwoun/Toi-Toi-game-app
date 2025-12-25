@@ -17,10 +17,11 @@ import com.example.playtocrypto.bar.BottomBar
 import com.example.playtocrypto.navigat.MainNavgrap
 import com.example.playtocrypto.navigat.Screen
 import com.example.playtocrypto.ui.theme.Backround
+import com.example.playtocrypto.viewmodel.Auth
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun AllScreen(navController: NavHostController) {
+fun AllScreen(navController: NavHostController,Auth: Auth) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
@@ -64,7 +65,7 @@ fun AllScreen(navController: NavHostController) {
             .background(Backround)
             .padding(innerPadding)) {
 
-            MainNavgrap(navController)
+            MainNavgrap(navController,Auth)
         }
 
     }

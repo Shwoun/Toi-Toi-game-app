@@ -1,6 +1,8 @@
 package com.example.playtocrypto.screen.auth
 
 
+import android.util.Patterns
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -29,27 +31,33 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.example.playtocrypto.R
 import com.example.playtocrypto.componat.LocalDimensions
 import com.example.playtocrypto.componat.Outlinetextfildname
 import com.example.playtocrypto.componat.PasswordTextfild
+import com.example.playtocrypto.componat.isInternetAvailable
 import com.example.playtocrypto.navigat.Screen
 import com.example.playtocrypto.ui.theme.Backround
 import com.example.playtocrypto.ui.theme.green
 import com.example.playtocrypto.ui.theme.litewihet
 import com.example.playtocrypto.ui.theme.with
+import com.example.playtocrypto.viewmodel.Auth
 
 
 @Composable
-fun Login(navController: NavHostController) {
+fun Login(navController: NavHostController,Auth : Auth) {
     val respon = LocalDimensions.current
-    var name by remember { mutableStateOf("") }
+     val context = LocalContext.current
+    var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var checked by remember { mutableStateOf(true) }
+
+
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -78,8 +86,8 @@ fun Login(navController: NavHostController) {
         Spacer(Modifier.height(respon.dp(30)))
 
         Outlinetextfildname(
-            value = name,
-            onvaluechange = { name = it },
+            value = email,
+            onvaluechange = { email = it },
             label = ("user@gmail.com"),
             icon = R.drawable.user
         )
@@ -116,7 +124,15 @@ fun Login(navController: NavHostController) {
         Spacer(Modifier.height(respon.dp(70)))
 
         Button(
-            onClick = { navController.navigate(Screen.Home.route) },
+            onClick = {
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()  ){
+                    Toast.makeText(context,"Please Enter a valid Email", Toast.LENGTH_LONG).show()
+                }else if (password.length < 8){
+                    Toast.makeText(context,"Please Enter a valid Password", Toast.LENGTH_LONG).show()
+                }else{
+                    Auth.login(email,password,navController)
+                }
+            },
             modifier = Modifier.size(width = respon.dp(300), height = respon.dp(45)),
 
             shape = RoundedCornerShape(respon.dp(8)),
