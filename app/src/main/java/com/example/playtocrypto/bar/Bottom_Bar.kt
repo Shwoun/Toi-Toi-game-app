@@ -58,7 +58,10 @@ fun BottomBar(
 
         ) {
             IconButton(
-                onClick = {navController.navigate(Screen.Home.route)},
+                onClick = {navController.navigate(Screen.Home.route){
+                    launchSingleTop = true
+                    popUpTo(Screen.Home.route)
+                } },
                 modifier = Modifier.size(respons.dp(50))
             ) {
                 Icon(
@@ -69,7 +72,10 @@ fun BottomBar(
                 )
             }
             IconButton(
-                onClick = { navController.navigate(Screen.Payout.route) },
+                onClick = { navController.navigate(Screen.Payout.route){
+                    launchSingleTop = true
+                    popUpTo (Screen.Payout.route)
+                } },
                 modifier = Modifier.size(respons.dp(50))
             ) {
                 Icon(
@@ -80,7 +86,10 @@ fun BottomBar(
                 )
             }
             IconButton(
-                onClick = { navController.navigate(Screen.Profile.route) },
+                onClick = { navController.navigate(Screen.Profile.route){
+                    launchSingleTop = true
+                    popUpTo(Screen.Profile.route)
+                } },
                 modifier = Modifier.size(respons.dp(50) )
             ) {
                 Icon(

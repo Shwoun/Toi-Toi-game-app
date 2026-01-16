@@ -171,7 +171,12 @@ fun SignUp(navController: NavHostController, Auth : Auth) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text("Already have an account?", color = litewihet, fontSize = respon.sp(16f))
-            TextButton(onClick = { navController.navigate(Screen.Login.route) }) {
+            TextButton(onClick = { navController.navigate(Screen.Login.route){
+                launchSingleTop = true
+                popUpTo (Screen.Login.route){
+                    inclusive = true
+                }
+            } }) {
                 Column {
                     Text("Login", color = green, fontSize = respon.sp(16f))
                     Divider(Modifier.width(respon.dp(40)))

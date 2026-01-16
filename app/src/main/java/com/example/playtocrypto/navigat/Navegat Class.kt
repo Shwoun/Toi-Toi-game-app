@@ -25,12 +25,12 @@ sealed class Screen(val route: String) {
 
 }
 
-fun NavGraphBuilder.homeNavGraph(navController: NavController) {
+fun NavGraphBuilder.homeNavGraph(navController: NavController,Auth: Auth) {
     composable(Screen.Home.route) {
         Home(navController)
     }
     composable(Screen.Profile.route) {
-        Profile(navController)
+        Profile(navController,Auth)
     }
 
     composable(Screen.Payout.route) {

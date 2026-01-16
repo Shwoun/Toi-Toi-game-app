@@ -6,14 +6,13 @@ import com.example.playtocrypto.navigat.Screen
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.database
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.firestore
 
 class Auth : ViewModel() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore = Firebase.firestore
-val database = Firebase.database
+  private val database = Firebase.database
     val current = auth.currentUser
 
 
@@ -45,7 +44,8 @@ val database = Firebase.database
                     name = name, email = email
 
                 )
-               database.getReference("Users").child(auth.currentUser!!.uid).setValue(userdata)
+//               database.getReference("Users").child(auth.currentUser!!.uid).setValue(userdata)
+                    firestore.collection("Users").document(auth.currentUser!!.uid).set(userdata)
                     .addOnSuccessListener {
                         navController.navigate(Screen.Home.route) {
                             popUpTo(Screen.SignUp.route) {
@@ -70,6 +70,9 @@ val database = Firebase.database
             }
         }
 
+    }
+    fun singOut () {
+        auth.signOut()
     }
 
 }

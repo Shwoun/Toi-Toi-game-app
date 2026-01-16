@@ -18,7 +18,7 @@ fun MainNavgrap(navController: NavHostController,Auth: Auth) {
         exitTransition = { fadeOut(tween(1)) }) {
 
 
-        homeNavGraph(navController)
+        homeNavGraph(navController,Auth)
         authNavGraph(navController,Auth)
     }
 

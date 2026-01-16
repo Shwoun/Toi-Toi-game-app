@@ -30,13 +30,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.example.playtocrypto.R
 import com.example.playtocrypto.componat.LocalDimensions
+import com.example.playtocrypto.navigat.Screen
 import com.example.playtocrypto.ui.theme.Backround
 import com.example.playtocrypto.ui.theme.Red
 import com.example.playtocrypto.ui.theme.litewihet
+import com.example.playtocrypto.viewmodel.Auth
 
 
 @Composable
-fun Profile(navController: NavController) {
+fun Profile(navController: NavController, Auth: Auth) {
     val respons = LocalDimensions.current
     Column(
         modifier = Modifier
@@ -197,7 +199,14 @@ fun Profile(navController: NavController) {
 
         }
         Spacer(Modifier.height(respons.dp(30)))
-        TextButton(onClick = {}) {
+        TextButton(onClick = {
+            Auth.singOut()
+            navController.navigate(Screen.Login.route) {
+                popUpTo(0) {
+                    inclusive = true
+                }
+            }
+        }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     painter = painterResource(R.drawable.logout),
